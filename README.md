@@ -91,8 +91,46 @@ git diff 命令显示已写入缓存与已修改但尚未写入缓存的改动�
 > A  hello.php
 > $ git commit -m 'test comment from w3cschool.cn'
 
+## git reset   【用于取消缓存已缓存的内容】
+ 这里我们有两个最近提交之后又有所改动的文件。我们将两个都缓存，并取消缓存其中一个。
 
+> $ git status -s
+>  M README
+>  M hello.php
+> $ git add .
+> $ git status -s
+> M  README
+> M  hello.pp
+> $ git reset HEAD -- hello.php 
+> Unstaged changes after reset:
+> M hello.php
+> $ git status -s
+> M  README
+>  M hello.php
 
+现在你执行 git commit 将只记录 README 文件的改动，并不含现在并不在缓存中的 hello.rb。
+
+## git rm  【将文件从缓存区中移除】
+如我们删除 hello.php文件：
+
+>  $ git rm hello.php 
+
+默认情况下，git rm file 会将文件从缓存区和你的硬盘中（工作目录）删除。 如果要在工作目录中留着该文件，可以使用命令：
+> git rm --cached。
+
+## git branch 【列出和创建分支】
+> git branch   //列出分支
+> git branch (branchname)   //创建名为branchname的分支
+
+## git checkout  【切换分支】
+> git checkout (branchname)
+
+切换分支的时候，Git 会用该分支的最后提交的快照替换你的工作目录的内容， 所以多个分支不需要多个目录。
+
+## git merge  【合并分支】
+> git merge 
+
+可以多次合并到统一分支， 也可以选择在合并之后直接删除被并入的分支。 
 
 # 2 功能场景  
 ## Git创建仓库
