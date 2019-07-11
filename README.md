@@ -47,7 +47,52 @@ Git 是一个开源的分布式版本控制系统，用于敏捷高效地处理�
 + git rm --cached <file>：直接从暂存区删除文件，工作区则不做出改变。
 + git checkout或git checkout -- <file>：用暂存区全部或指定的文件替换工作区的文件。这个操作很危险，会清除工作区中未添加到暂存区的改动。
 + git checkout HEAD ." 或 "git checkout HEAD <file>" 命令时，用 HEAD 指向的 master 分支中的全部或者部分文件替换暂存区和以及工作区中的文件。这个命令也是极具危险性的，因为不但会清除工作区中未提交的改动，也会清除暂存区中未提交的改动。 
- 
+
+
+# 命令概览
+![Git常用命令速查表](https://7n.w3cschool.cn/attachments/image/20170206/1486348362884912.jpg)
+
+# Git基本操作
+## git init  【获取与创建项目命令】
+用 git init 在目录中创建新的 Git 仓库。 你可以在任何时候、任何目录中这么做，完全是本地化的。在目录中执行 git init，就可以创建一个 Git 仓库了。
+
+## git clone   【拷贝一个 Git 仓库到本地】
+使用 git clone 拷贝一个 Git 仓库到本地，让自己能够查看该项目，或者进行修改。如果你需要与他人合作一个项目，或者想要复制一个项目，看看代码，你就可以克隆那个项目。 
+>  git clone [url]
+>  $ git clone git://github.com/schacon/simplegit.git
+
+## git add 【将该文件添加到缓存】
+新项目中，添加所有文件很普遍，可以在当前工作目录执行命令：git add .。
+> $ git add .
+> $ git status -s
+> A  README
+> A  hello.php
+
+## git status  【查看项目的当前状态】
+通过该命令可以查看当前项目文件的状态信息,加了 -s 参数，以获得简短的结果输出
+>$ git status -s
+>   M README.md
+
+## git diff  【显示已写入缓存与已修改但尚未写入缓存的改动的区别】
+git diff 命令显示已写入缓存与已修改但尚未写入缓存的改动的区别。git diff 有两个主要的应用场景。
+
++ 尚未缓存的改动：git diff
++ 查看已缓存的改动： git diff --cached
++ 查看已缓存的与未缓存的所有改动：git diff HEAD
++ 显示摘要而非整个 diff：git diff --stat
+
+## git commit  【提交本地仓库】
+使用 git add 命令将想要快照的内容写入了缓存， 而执行 git commit 记录缓存区的快照。Git 为你的每一个提交都记录你的名字与电子邮箱地址，所以第一步需要配置用户名和邮箱地址。
+> $ git config --global user.name 'w3cschool'
+> $ git config --global user.email w3c@w3cschool.cn
+> $ git add hello.php
+> $ git status -s
+> A  README
+> A  hello.php
+> $ git commit -m 'test comment from w3cschool.cn'
+
+
+
 
 # 2 功能场景  
 ## Git创建仓库
@@ -106,6 +151,3 @@ Git 使用 git init 命令来初始化一个 Git 仓库，在执行完成 git in
 + 添加文件
 + 提交文件
 
-# 命令详解
-
-# 业务场景
